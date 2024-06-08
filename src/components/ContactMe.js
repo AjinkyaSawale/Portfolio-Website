@@ -1,6 +1,7 @@
-// ContactMe.js
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import navIcon1 from "../assets/img/nav-icon1.svg"; // LinkedIn icon
+import navIcon3 from "../assets/img/envelope-regular-light.svg"; // Email icon
 
 const ContactContainer = styled.div`
   background-color: #121212;
@@ -37,17 +38,64 @@ const ContactLink = styled.a`
   }
 `;
 
+const IconsContainer = styled.div`
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+`;
+
+const IconLink = styled.a`
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s, filter 0.3s;
+  }
+
+  &:hover img {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+  }
+
+  &:hover img.email-icon {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg)
+      brightness(100%) contrast(100%);
+  }
+`;
+
 const ContactMe = () => {
   return (
     <ContactContainer>
       <ContactHeader>Contact Me</ContactHeader>
       <ContactInfo>
-        <p>Phone: <ContactLink href="tel:+919145073817">9145073817</ContactLink></p>
-        <p>Email: <ContactLink href="mailto:ajinkyasawale.work@gmail.com">ajinkyasawale.work@gmail.com</ContactLink></p>
+        <p>
+          Phone: <ContactLink href="tel:+919145073817">9145073817</ContactLink>
+        </p>
+        <p>
+          Email:{" "}
+          <ContactLink href="mailto:ajinkyasawale.work@gmail.com">
+            ajinkyasawale.work@gmail.com
+          </ContactLink>
+        </p>
       </ContactInfo>
+      <IconsContainer>
+        <IconLink
+          href="https://www.linkedin.com/in/ajinkya-sawale/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={navIcon1} alt="LinkedIn" />
+        </IconLink>
+        <IconLink href="mailto:ajinkyasawale.work@gmail.com">
+          <img src={navIcon3} alt="Email" className="email-icon" />
+        </IconLink>
+      </IconsContainer>
     </ContactContainer>
   );
 };
 
-export  {ContactMe};
-
+export { ContactMe };

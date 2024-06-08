@@ -1,10 +1,9 @@
-// MyNavbar.js
 import { Link } from 'react-router-dom';
 import { Navbar as BootstrapNavbar, Container, Nav } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/github.svg";
-import navIcon3 from "../assets/img/nav-icon3.svg";
+import navIcon3 from "../assets/img/envelope-regular-light.svg";
 
 const MyNavbar = () => {
   const [activeLink, setActiveLink] = useState("home");
@@ -31,9 +30,6 @@ const MyNavbar = () => {
     <>
       <BootstrapNavbar expand="lg" className={scrolled ? "scrolled" : ""}>
         <Container>
-          <BootstrapNavbar.Brand href="#home">
-           
-          </BootstrapNavbar.Brand>
           <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav">
             <span className="navbar-toggler-icon"></span>
           </BootstrapNavbar.Toggle>
@@ -41,7 +37,7 @@ const MyNavbar = () => {
             <Nav className="me-auto">
               <Nav.Link
                 as={Link}
-                to="/"
+                to="/Home"
                 className={activeLink === "home" ? "active navbar-link" : "navbar-link"}
                 onClick={() => onUpdateLink("home")}
               >
@@ -63,17 +59,25 @@ const MyNavbar = () => {
               >
                 Projects
               </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="/ContactMe"
+                className={activeLink === "contactme" ? "active navbar-link" : "navbar-link"}
+                onClick={() => onUpdateLink("contactme")}
+              >
+                Contact Me
+              </Nav.Link>
             </Nav>
             <span className="navbar-text">
               <div className="social-icon">
                 <a href="https://www.linkedin.com/in/ajinkya-sawale/">
-                  <img src={navIcon1} alt=""></img>
+                  <img src={navIcon1} alt="linkedln-img"></img>
                 </a>
-                <a href="#">
-                  <img src={navIcon2} alt=""></img>
+                <a href="https://github.com/AjinkyaSawale">
+                  <img src={navIcon2} alt="github-img"></img>
                 </a>
-                <a href="#">
-                  <img src={navIcon3} alt=""></img>
+                <a href="mailto:ajinkyasawale.work@gmail.com">
+                  <img src={navIcon3} alt="email-img"></img>
                 </a>
               </div>
               <button
@@ -93,3 +97,5 @@ const MyNavbar = () => {
 };
 
 export { MyNavbar };
+
+
