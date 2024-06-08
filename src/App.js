@@ -5,7 +5,7 @@ import { Home } from "./Home";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
 import { ContactMe } from "./components/ContactMe";
-import { Footer } from "./Footer";
+//import { Footer } from "./Footer";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 

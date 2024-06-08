@@ -27,6 +27,7 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "gh-pages": "^5.0.0"
   },
   "eslintConfig": {
@@ -48,4 +49,3 @@
     ]
   }
 }
-

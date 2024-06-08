@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import headerImg from "../assets/img/header-img.svg";
@@ -11,15 +11,7 @@ const Banner = () => {
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [showContactInfo, setShowContactInfo] = useState(false);
 
-  useEffect(() => {
-    const ticker = setInterval(() => {
-      tick();
-    }, delta);
-
-    return () => clearInterval(ticker);
-  }, [text, delta]);
-
-  const tick = () => {
+  const tick = useCallback(() => {
     let i = loopNum % toRotate.length;
     let fullText = toRotate[i];
     let updatedText = isDeleting
@@ -40,7 +32,15 @@ const Banner = () => {
       setLoopNum((prevLoopNum) => prevLoopNum + 1);
       setDelta(500);
     }
-  };
+  }, [isDeleting, loopNum, text, toRotate]);
+
+  useEffect(() => {
+    const ticker = setInterval(() => {
+      tick();
+    }, delta);
+
+    return () => clearInterval(ticker);
+  }, [tick, delta]);
 
   const handleConnectClick = () => {
     setShowContactInfo(true);
@@ -54,7 +54,7 @@ const Banner = () => {
             <Col xs={12} md={6} xl={7}>
               <span className="tagline">Welcome to my Portfolio</span>
               <h1>
-                {`Hi,I am Ajinkya`}
+                {`Hi, I am Ajinkya`}
                 <br></br>
                 <span className="wrap">{text}</span>
               </h1>
@@ -88,3 +88,4 @@ const Banner = () => {
 };
 
 export { Banner };
+
