@@ -1,5 +1,5 @@
 // App.js
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { MyNavbar } from "./components/MyNavbar";
 import { Home } from "./Home";
 import { Skills } from "./components/Skills";
@@ -10,11 +10,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <Router basename="/Portfolio-Website">
+    <Router>
       <div className="App">
         <MyNavbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/Home" />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Skills" element={<Skills />} />
           <Route path="/Projects" element={<Projects />} />
